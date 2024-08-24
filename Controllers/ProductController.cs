@@ -6,6 +6,11 @@ namespace OmdotnetMvc.Controllers
     {
         public IActionResult Index()
         {
+            var Email=HttpContext.Session.GetString("Email");
+            if(Email==null)
+            {
+                return RedirectToAction("Login","User");
+            }
             return View();
         }
     }

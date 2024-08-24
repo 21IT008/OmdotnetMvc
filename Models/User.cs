@@ -17,6 +17,7 @@ namespace OmdotnetMvc.Models
 
         [Required(ErrorMessage = "Plaese Enter Password")]
         [StringLength(10,MinimumLength =6,ErrorMessage ="password should be between 6 t0 10 characters")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Plaese Choose Gender")]
