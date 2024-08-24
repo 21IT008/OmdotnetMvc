@@ -58,6 +58,11 @@ namespace OmdotnetMvc.Controllers
             return View(user);
         }
 
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
         public IActionResult Success()
         {
             return View();
