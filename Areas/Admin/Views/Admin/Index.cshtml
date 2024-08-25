@@ -1,0 +1,7 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+    var AdminEmail = Context.Session.GetString("AdminEmail");
+}
+<div class="text-center">
+    <h1 class="display-4">Welcome @AdminEmail</h1>
+</div>
