@@ -4,6 +4,8 @@ namespace OmdotnetMvc.Models
 {
     public class User
     {
+        public int Id { get; set; }
+
         [Required(ErrorMessage ="Plaese Provide Name")]
         public string Name { get; set; }
 

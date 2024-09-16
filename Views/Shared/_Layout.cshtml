@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - OmProducts</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/OmdotnetMvc.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
     <header class="sticky-top">
@@ -19,24 +19,30 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Product</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
                         @{
-                            var Name=Context.Session.GetString("Name");
+                            var AdminEmail = Context.Session.GetString("AdminEmail");
+                            var Name = Context.Session.GetString("Name");
+                            var currentController = ViewContext.RouteData.Values["Controller"]?.ToString();
+                            var currentAction = ViewContext.RouteData.Values["Action"]?.ToString();
                         }
+                        <li class="nav-item">
+                            <a class="nav-link @(currentController == "Home" && currentAction == "Index" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(currentController == "Product" && currentAction == "Index" ? "active" : "")" asp-area="" asp-controller="Product" asp-action="Index">Product</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(currentController == "Home" && currentAction == "Privacy" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
                         @if(string.IsNullOrEmpty(Name)){
+                            @if (AdminEmail == null)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link @(currentController == "User" && currentAction == "Register" ? "active" : "")" asp-area="" asp-controller="User" asp-action="Register">Register</a>
+                                </li>
+                            }
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Register">Register</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Admin" asp-action="Index">Admin</a>
+                                <a class="nav-link @(currentController == "Admin" && currentAction == "Index" ? "active" : "")" asp-area="Admin" asp-controller="Admin" asp-action="Index">Admin</a>
                             </li>
                         }
                         else

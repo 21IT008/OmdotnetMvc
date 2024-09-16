@@ -7,7 +7,8 @@ namespace OmdotnetMvc.Controllers
         public IActionResult Index()
         {
             var Email=HttpContext.Session.GetString("Email");
-            if(Email==null)
+            var AdminEmail=HttpContext.Session.GetString("AdminEmail");
+            if(Email==null && AdminEmail==null)
             {
                 return RedirectToAction("Login","User");
             }

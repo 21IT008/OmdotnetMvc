@@ -20,3 +20,7 @@ html {
 body {
   margin-bottom: 60px;
 }
+.nav-link.active {
+        border-bottom: 3px solid blue; /* Underline effect */
+        padding-bottom: 5px; /* Add some space between text and underline */
+    }

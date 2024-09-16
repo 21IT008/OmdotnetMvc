@@ -1,11 +1,11 @@
 ﻿@{
-    ViewData["Title"] = "User Registration";
+    ViewData["Title"] = "User Updation";
 }
 @model OmdotnetMvc.Models.User
 
 <div class="container">
-    <h2 class="text-center display-4">Register</h2>
-    <form asp-action="Register" method="post">
+    <h2 class="text-center display-4">User details</h2>
+    <form asp-action="Edit" method="post">
         <div class="form-group mb-2">
             <label asp-for="Name" class="form-label"></label>
             <input asp-for="Name" class="form-control" />
@@ -17,16 +17,6 @@
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <div class="form-group mb-2">
-            <label asp-for="ConfirmEmail" class="form-label"></label>
-            <input asp-for="ConfirmEmail" class="form-control" />
-            <span asp-validation-for="ConfirmEmail" class="text-danger"></span>
-        </div>
-        <div class="form-group mb-2">
-            <label asp-for="Password" class="form-label"></label>
-            <input asp-for="Password" type="password" class="form-control" />
-            <span asp-validation-for="Password" class="text-danger"></span>
-        </div>
-        <div class="form-group mb-2">
             <label class="form-label">Gender</label>
             <div class="form-check">
                 <input asp-for="Gender" type="radio" value="Male" class="form-check-input" id="genderMale" />Male
@@ -35,11 +25,6 @@
                 <input asp-for="Gender" type="radio" value="Female" class="form-check-input" id="genderFemale" />Female
             </div>
             <span asp-validation-for="Gender" class="text-danger"></span>
-        </div>
-        <div class="form-check mb-2">
-            <input asp-for="AcceptTerms" type="checkbox" class="form-check-input" id="acceptTerms" />
-            <label class="form-check-label" for="acceptTerms">Accept Terms</label>
-            <span asp-validation-for="AcceptTerms" class="text-danger"></span>
         </div>
         <div class="form-group mb-2">
             <label asp-for="Country" class="form-label"></label>
@@ -53,16 +38,14 @@
         </div>
         <div class="container d-flex justify-content-center gap-4">
             <div class="text-center">
-                <button type="submit" class="btn btn-primary">Register</button>
-            </div>
-            <div class="text-center align-self-center">
-                <span>Already have an account? </span>
-                <a class="btn btn-outline-primary text-decoration-none" asp-action="Login">Login</a>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
 
     </form>
 </div>
-@section Scripts{
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
